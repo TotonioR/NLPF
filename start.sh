@@ -1,2 +1,2 @@
 #!/bin/bash
-morbo hello.pl
+morbo job_trailer/script/job_trailer
