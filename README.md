@@ -7,12 +7,12 @@
 
 ## Installation :
 
-1. Récupérer le fichier NLPF.ova sur le drive PIT/NLPF
+1. Récupérer le fichier NLPF.ova sur le drive du groupe Dijkstra dans le dossier PIT/NLPF
 2. Télécharger et installer la dernière version de VirtualBox (https://www.virtualbox.org/wiki/Downloads)
-3. Exécuter VirtualBox et aller dans fichier puis Importer.
-4. Sélectionner le fichier NLPF.ova puis lancer l'importation
+3. Exécuter VirtualBox et aller dans l'onglet Fichier de la fenêtre puis sélectionner Importer.
+4. Sélectionner le fichier NLPF.ova puis lancer l'importation (Aucun changement n'est nécéssaire)
 5. Une fois fini, cliquer sur la machine importée et aller dans configuration -> Dossiers partagés
-6. Editer le dossier partagé et choisissez un dossier s'appelant NLPF/ (si vous n'en avez pas créer-le) et mettez comme point de montage /home/nlpf/NLPF
+6. Editer le dossier partagé et choisissez un dossier votre OS principal s'appelant NLPF/ (si vous n'en avez pas créer-le) et mettez comme point de montage la chemin /home/nlpf/NLPF
 7. Lancer la machine
 8. Aller dans le dossier ~/NLPF
 9. Lancer la commande
