@@ -41,4 +41,20 @@ sub is_logged_in {
     );
 }
 
+sub create {
+	my $self = shift;
+	my $username = $self->param('username');
+	my $password = $self->param('password');
+  if (user_exists($username, $password)) {
+  
+    } else {
+        $self->db->resultset('User')->create({
+		email => $username,
+		password => $password,
+		});
+		$self->flash(post_saved => 1);
+		$self->redirect_to('login_form');
+    }
+}
+
 1;

@@ -26,8 +26,8 @@
  <div class="container h-100">
     <div class="row h-100 align-items-center">
 	<div class="col-12 text-center">
-        <h2 class="font-weight-light">Page de connexion</h2></br>
-<%= form_for '/login' => (method => "post") => (class => "form-horizontal") => (id => "login-form") => begin %>
+        <h2 class="font-weight-light">Page d'inscription</h2></br>
+<%= form_for '/inscription' => (method => "post") => (class => "form-horizontal") => (id => "inscription-form") => begin %>
 <form>
     <fieldset>
         <div class="control-group">
@@ -46,13 +46,12 @@
 
             <div class="controls">
 			</br>
-                <button type="submit" class="btn btn-success">Login</button>
+                <button type="submit" class="btn btn-success">Inscription</button>
             </div>
         </div>
     </fieldset>
 </form>
 <% end %>
-<a class="btn btn-success" href="/inscription">S'inscrire</a>
       </div>
     </div>
   </div>
