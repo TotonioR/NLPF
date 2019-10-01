@@ -5,9 +5,8 @@ use Mojo::Base 'Mojolicious::Controller';
 # Mocked function to check the correctness
 # of a username/password combination.
 sub user_exists {
-  my $schema = Jobeet::Schema->connect('dbi:SQLite:jobeet.db');
-  my ($email, $password) = @_;
-  my $user = $schema->resultset('User')->search({ email => $email })->first;
+  my ($self, $email, $password) = @_;
+  my $user = $self->db->resultset('User')->search({ email => $email })->first;
   return defined $user && $user->password == $password;
 }
 
@@ -19,11 +18,11 @@ sub on_user_login {
   # Grab the request parameters
   my $username = $self->param('username');
   my $password = $self->param('password');
-  if (user_exists($username, $password)) {
+  if (my $user = $self->user_exists($username, $password)) {
 
         $self->session(logged_in => 1);
         $self->session(username => $username);
-
+		
         $self->redirect_to('overview');
     } else {
         $self->render(text => 'Wrong username/password', status => 403);
@@ -45,7 +44,7 @@ sub create {
 	my $self = shift;
 	my $username = $self->param('username');
 	my $password = $self->param('password');
-  if (user_exists($username, $password)) {
+  if (my $user = $self->user_exists($username, $password)) {
   
     } else {
         $self->db->resultset('User')->create({
