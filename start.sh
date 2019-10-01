@@ -1,2 +1,2 @@
 #!/bin/bash
-morbo job_trailer/script/job_trailer
+morbo jobeet/script/jobeet

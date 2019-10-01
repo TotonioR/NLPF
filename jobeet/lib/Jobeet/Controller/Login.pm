@@ -1,13 +1,14 @@
-package JobTrailer::Controller::Login;
+package Jobeet::Controller::Login;
 use Mojo::Base 'Mojolicious::Controller';
 
 
 # Mocked function to check the correctness
 # of a username/password combination.
 sub user_exists {
-  my ($username, $password) = @_;
-
-  return ($username eq 'foo@bar.fr' && $password eq 'bar');
+  my $schema = Jobeet::Schema->connect('dbi:SQLite:jobeet.db');
+  my ($email, $password) = @_;
+  my $user = $schema->resultset('User')->search({ email => $email })->first;
+  return defined $user && $user->password == $password;
 }
 
 
@@ -18,7 +19,6 @@ sub on_user_login {
   # Grab the request parameters
   my $username = $self->param('username');
   my $password = $self->param('password');
-  print($username);
   if (user_exists($username, $password)) {
 
         $self->session(logged_in => 1);

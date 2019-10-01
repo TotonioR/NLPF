@@ -1,4 +1,4 @@
-package JobTrailer::Schema::Result::User;
+package Jobeet::Schema::Result::User;
 use base qw/DBIx::Class::Core/;
 
 # Associated table in database
