@@ -1,8 +1,8 @@
-package Jobeet::Schema::Result::User;
+package Jobeet::Schema::Result::Tag;
 use base qw/DBIx::Class::Core/;
 
 # Associated table in database
-__PACKAGE__->table('user');
+__PACKAGE__->table('tag');
 
 # Column definition
 __PACKAGE__->add_columns(
@@ -12,25 +12,12 @@ __PACKAGE__->add_columns(
          is_auto_increment => 1,
      },
 
-     email => {
+     name => {
          data_type => 'text',
-     },
-
-     password => {
-         data_type => 'text',
-     },
-	 
-	 recruteur => {
-         data_type => 'integer',
      },
  );
 
  # Tell DBIC that 'id' is the primary key
  __PACKAGE__->set_primary_key('id');
- 
-__PACKAGE__->has_many(
-     tags => 'Jobeet::Schema::Tag',
-     id
- );
 
 1;

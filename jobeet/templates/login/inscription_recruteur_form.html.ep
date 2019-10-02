@@ -26,8 +26,8 @@
  <div class="container h-100">
     <div class="row h-100 align-items-center">
 	<div class="col-12 text-center">
-        <h2 class="font-weight-light">Page de connexion</h2></br>
-<%= form_for '/login' => (method => "post") => (class => "form-horizontal") => (id => "login-form") => begin %>
+        <h2 class="font-weight-light">Page d'inscription des recruteurs</h2></br>
+<%= form_for '/inscription_recruteur' => (method => "post") => (class => "form-horizontal") => (id => "inscription-form") => begin %>
 <form>
     <fieldset>
         <div class="control-group">
@@ -46,33 +46,12 @@
 
             <div class="controls">
 			</br>
-                <button type="submit" class="btn btn-success">Login</button>
+                <button type="submit" class="btn btn-success">Inscription</button>
             </div>
         </div>
     </fieldset>
 </form>
 <% end %>
-<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#Modal">S'inscrire</button>
-<div class="modal fade" id="Modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Qui êtes-vous ?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-       
-      <div class="modal-body">
-	  <a role="button"  class="btn btn-primary" href="/inscription">Un Candidat</a>
-	  <a role="button"  class="btn btn-primary" href="/inscription_recruteur">Un Recruteur</a>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
       </div>
     </div>
   </div>
