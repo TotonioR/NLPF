@@ -1,4 +1,5 @@
 package Jobeet;
+use Mojolicious::Sessions;
 use Mojo::Base 'Mojolicious';
 use DBI;
 use strict;
@@ -28,18 +29,9 @@ sub startup {
   $r->post('/inscription_recruteur')->name('do_inscription_recruteur')->to('Login#create_recruteur');
   $r->get('/inscription')->name('inscription')->to(template => 'login/inscription_form');
   $r->post('/inscription')->name('do_inscription')->to('Login#create');
-  my $auth = $r->under('/dashboard')->to('Login#is_logged_in');
-  $auth->get('/overview')->name('overview')->to('dashboard#overview');
-  
-  $r->route('/logout')->name('do_logout')->to(cb => sub {
-     my $self = shift;
-
-     # Expire the session (deleted upon next request)
-     $self->session(expires => 1);
-
-     # Go back to home
-     $self->redirect_to('/');
- });
+  my $auth = $r->under('/')->to('Login#is_logged_in');
+  $auth->get('/overview')->to('dashboard#overview');
+  $r->get('/logout')->to('Login#logout');
 }
 
 1;
