@@ -23,14 +23,25 @@ __PACKAGE__->add_columns(
 	 recruteur => {
          data_type => 'integer',
      },
+
+     nom => {
+         data_type => 'text',
+     },
+
+     prenom => {
+         data_type => 'text',
+     },
+
+     mobile => {
+         data_type => 'text',
+     },
  );
 
  # Tell DBIC that 'id' is the primary key
  __PACKAGE__->set_primary_key('id');
- 
-__PACKAGE__->has_many(
-     tags => 'Jobeet::Schema::Tag',
-     id
+ __PACKAGE__->has_many(
+     tags => 'Jobeet::Schema::Result::Tag',
+     'user_id'
  );
 
 1;

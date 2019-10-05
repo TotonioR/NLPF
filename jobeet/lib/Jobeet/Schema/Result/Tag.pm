@@ -15,9 +15,16 @@ __PACKAGE__->add_columns(
      name => {
          data_type => 'text',
      },
+
+     user_id => {
+         data_type => 'integer',
+         is_foreign_key => 1,
+     }
  );
 
  # Tell DBIC that 'id' is the primary key
  __PACKAGE__->set_primary_key('id');
-
+ __PACKAGE__->belongs_to(
+            user => 'Jobeet::Schema::Result::User',
+            'user_id');
 1;

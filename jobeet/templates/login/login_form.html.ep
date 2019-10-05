@@ -2,10 +2,11 @@
 % title 'Jobeet';
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
   <div class="container">
-    <a class="navbar-brand">Jobeet</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <a class="navbar-brand" href="/">Jobeet</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
@@ -13,69 +14,73 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/login">Se connecter
-                <span class="sr-only">(current)</span>
-              </a>
+            <span class="sr-only">(current)</span>
+          </a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<header style="height: 50vh;background-image:url('/business.jpg');background-size: cover;background-position: center; background-repeat: no-repeat;">
+<header
+  style="height: 50vh;background-image:url('/business.jpg');background-size: cover;background-position: center; background-repeat: no-repeat;">
 </header>
 </br></br>
- <div class="container h-100">
-    <div class="row h-100 align-items-center">
-	<div class="col-12 text-center">
-        <h2 class="font-weight-light">Page de connexion</h2></br>
-<%= form_for '/login' => (method => "post") => (class => "form-horizontal") => (id => "login-form") => begin %>
-<form>
-    <fieldset>
-        <div class="control-group">
+<div class="container h-100">
+  <div class="row h-100 align-items-center">
+    <div class="col-12 text-center">
+      <h2 class="font-weight-light">Page de connexion</h2></br>
+      <%= form_for '/login' => (method => "post") => (class => "form-horizontal") => (id => "login-form") => begin %>
+      <form>
+        <fieldset>
+          <div class="control-group">
             <div class="controls">
-                <input type="email" id="username" name="username" placeholder="Email" class="form-control" required>
+              <label>Email</label>
+              <input type="email" id="username" name="username" placeholder="exemple@test.fr" class="form-control" required>
             </div>
-        </div>
-		</br>
-        <div class="control-group">
+          </div>
+          </br>
+          <div class="control-group">
             <div class="controls">
-                <input type="password" id="password" name="password" placeholder="Mot de Passe" class="form-control" required>
+              <label>Mot de passe</label>
+              <input type="password" id="password" name="password" class="form-control"
+                required>
             </div>
-        </div>
-        <div class="control-group">
+          </div>
+          <div class="control-group">
             <!-- Button -->
 
             <div class="controls">
-			</br>
-                <button type="submit" class="btn btn-success">Login</button>
+              </br>
+              <button type="submit" class="btn btn-success">Login</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">S'inscrire</button>
             </div>
-        </div>
-    </fieldset>
-</form>
-<% end %>
-<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#Modal">S'inscrire</button>
-<div class="modal fade" id="Modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Qui êtes-vous ?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-       
-      <div class="modal-body">
-	  <a role="button"  class="btn btn-primary" href="/inscription">Un Candidat</a>
-	  <a role="button"  class="btn btn-primary" href="/inscription_recruteur">Un Recruteur</a>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-      </div>
-    </div>
-  </div>
+          </div>
+        </fieldset>
+      </form>
+      <% end %>
+      <div class="modal fade" id="Modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Qui êtes-vous ?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
- 
+            <div class="modal-body">
+              <a role="button" class="btn btn-primary" href="/inscription">Un Candidat</a>
+              <a role="button" class="btn btn-primary" href="/inscription_recruteur">Un Recruteur</a>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </p>

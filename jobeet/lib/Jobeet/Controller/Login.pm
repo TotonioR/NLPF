@@ -40,15 +40,30 @@ sub create {
 	my $self = shift;
 	my $username = $self->param('username');
 	my $password = $self->param('password');
+	my $nom = $self->param('nom');
+	my $prenom = $self->param('prenom');
+	my $mobile = $self->param('mobile');
+	my $tags = $self->param('tag');
 	if (my $user = $self->user_exists($username, $password)) {
 		$self->render(text => 'User already exists', status => 403);
 	} else {
-			$self->db->resultset('User')->create({
+			$user = $self->db->resultset('User')->create({
 				email => $username,
 				password => $password,
 				recruteur => 0,
+				nom => $nom,
+				prenom => $prenom,
+				mobile => $mobile,
 			});
-			$self->flash(post_saved => 1);
+			print ref($tags);
+			my @tmp = split(/[,]/, $tags);
+			foreach my $i (@tmp)
+			{
+				my $tag = $self->db->resultset('Tag')->create({
+					name => $i,
+					user_id => $user->id,
+				 });
+			}
 			$self->redirect_to('login_form');
 	}
 }
@@ -57,15 +72,20 @@ sub create_recruteur {
 	my $self = shift;
 	my $username = $self->param('username');
 	my $password = $self->param('password');
+	my $nom = $self->param('nom');
+	my $prenom = $self->param('prenom');
+	my $mobile = $self->param('mobile');
 	if (my $user = $self->user_exists($username, $password)) {
 		$self->render(text => 'User already exists', status => 403);
 	} else {
-        $self->db->resultset('User')->create({
+        my $user = $self->db->resultset('User')->create({
 			email => $username,
 			password => $password,
 			recruteur => 1,
+			nom => $nom,
+			prenom => $prenom,
+			mobile => $mobile,
 		});
-		$self->flash(post_saved => 1);
 		$self->redirect_to('login_form');
 	}
 }
