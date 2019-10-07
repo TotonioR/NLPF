@@ -29,15 +29,18 @@ sub startup {
   my $auth = $r->under('/dashboard')->to('Login#is_logged_in');
   $auth->get('/overview')->name('overview')->to('dashboard#overview');
   
+  #Announce
+  $r->get('/announce')->name('announce_list')->to('Announce#list');
+
   $r->route('/logout')->name('do_logout')->to(cb => sub {
-     my $self = shift;
+   my $self = shift;
 
-     # Expire the session (deleted upon next request)
-     $self->session(expires => 1);
+   # Expire the session (deleted upon next request)
+   $self->session(expires => 1);
 
-     # Go back to home
-     $self->redirect_to('/');
- });
+   # Go back to home
+   $self->redirect_to('/');
+   });
 }
 
 1;
