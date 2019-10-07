@@ -2,7 +2,7 @@
 % title 'Jobeet';
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
   <div class="container">
-    <a class="navbar-brand"  href="/">Jobeet</a>
+    <a class="navbar-brand" href="/">Jobeet</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
       aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,8 +28,8 @@
 <div class="container h-100">
   <div class="row h-100 align-items-center">
     <div class="col-12 text-center">
-      <h2 class="font-weight-light">Page d'inscription des candidats</h2></br>
-      <%= form_for '/inscription' => (method => "post") => (class => "form-horizontal") => (id => "inscription-form") => begin %>
+      <h2 class="font-weight-light">Page d'inscription des recruteurs</h2></br>
+      <%= form_for '/inscription_recruteur' => (method => "post") => (class => "form-horizontal") => (id => "inscription-form") => begin %>
       <form>
         <fieldset>
           <div class="control-group">
@@ -45,46 +45,36 @@
               <input type="password" id="password" name="password" class="form-control" required>
             </div>
           </div>
-            </br>
-            <div class="control-group">
-              <div class="controls">
-                <label>Tags</label>
-                <input id="tag" name="tag" placeholder="Tag1, Tag2, Tag3 ..." class="form-control">
-              </div>
-            </div>
-
-            </br>
-            <div class="control-group">
-              <div class="controls">
-                <label>Nom</label>
-                <input id="nom" name="nom" class="form-control" required>
-              </div>
-            </div>
-            </br>
-            <div class="control-group">
-              <div class="controls">
-                <label>Prénom</label>
-                <input id="prenom" name="prenom" class="form-control" required>
-              </div>
-            </div>
-            </br>
-            <div class="control-group">
-              <div class="controls">
-                <label>Numéro de téléphone</label>
-                <input id="mobile" name="mobile" placeholder="XX XX XX XX XX" class="form-control" required >
-              </div>
-            </div>
-            <!-- Button -->
-
+          </br>
+          <div class="control-group">
             <div class="controls">
-              </br>
-              <button type="submit" class="btn btn-success">Inscription</button>
+              <label>Nom</label>
+              <input id="nom" name="nom" class="form-control" required>
             </div>
+          </div>
+          </br>
+          <div class="control-group">
+            <div class="controls">
+              <label>Prénom</label>
+              <input id="prenom" name="prenom" class="form-control" required>
+            </div>
+          </div>
+          </br>
+          <div class="control-group">
+            <div class="controls">
+              <label>Numéro de téléphone</label>
+              <input id="mobile" name="mobile" placeholder="XX XX XX XX XX" class="form-control" required >
+            </div>
+          </div>
+          <!-- Button -->
+
+          <div class="controls">
+            </br>
+            <button type="submit" class="btn btn-success">Inscription</button>
           </div>
         </fieldset>
       </form>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
 
