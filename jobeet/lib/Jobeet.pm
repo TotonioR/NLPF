@@ -30,7 +30,8 @@ sub startup {
   $auth->get('/overview')->name('overview')->to('dashboard#overview');
   
   #Announce
-  $r->get('/announce')->name('announce_list')->to('Announce#list');
+  $r->get('/announce')->to('announce#list');
+  $r->post('/announce_add')->name('do_announce')->to('announce#create');
 
   $r->route('/logout')->name('do_logout')->to(cb => sub {
    my $self = shift;

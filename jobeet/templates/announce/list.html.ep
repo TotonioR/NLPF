@@ -1,37 +1,45 @@
 % layout 'default';
 % title 'Jobeet';
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-  <div class="container">
-    <a class="navbar-brand">Jobeet</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Se connecter
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header style="height: 40vh;background-image:url('/business.jpg');background-size: cover; background-repeat: no-repeat;">
+</header>
+</br></br>
 <div class="container h-100">
   <div class="row h-100 align-items-center">
     <div class="col-12 text-center">
-      <h2 class="font-weight-light">Liste des annonces</h2>
-    </br>
-    % foreach my $announce (@$announces) {
-        <li><%= $announce->title %></li>
-    % }
+      <h2 class="font-weight-light">Ajoutez une annonce</h2>
+      <%= form_for '/announce_add' => (method => "post") => (class => "form-horizontal") => (id => "announce-form") => begin %>
+        <form>
+          <fieldset>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="text" id="title" name="title" placeholder="Titre" class="form-control">
+                </div>
+            </div>
+            </br>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="text" id="description" name="description" placeholder="Description" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+              <!-- Button -->
+              <div class="controls">
+                </br>
+                <button type="submit" class="btn btn-success">Ajouter</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      <% end %>
     </div>
   </div>
 </div>
-
-
-</p>
+<!-- Page Content -->
+<div class="container">
+  <h2 class="font-weight-light">Liste des annonces</h2>
+  % while (my $announce = $announces->next) {
+        <li> <%= $announce->title %> </li>
+  % }
+</div>

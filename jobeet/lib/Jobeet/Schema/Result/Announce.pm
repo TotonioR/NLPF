@@ -22,5 +22,4 @@ __PACKAGE__->add_columns(
 );
 
  # Tell DBIC that 'id' is the primary key
-__PACKAGE__->set_primary_key('id');
-__PACKAGE__->has_one('user' =>'Jobeet::Schema::Result::User', 'id');    
+__PACKAGE__->set_primary_key('id');  
