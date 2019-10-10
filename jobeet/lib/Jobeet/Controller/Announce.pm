@@ -18,7 +18,7 @@ sub create {
 	});
 
 	$self->flash(post_saved => 1);
-	return $self->list; 
+	$self->redirect_to('announce');
 }
 
 sub list {
