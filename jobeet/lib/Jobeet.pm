@@ -29,6 +29,11 @@ sub startup {
   $r->post('/inscription_recruteur')->name('do_inscription_recruteur')->to('Login#create_recruteur');
   $r->get('/inscription')->name('inscription')->to(template => 'login/inscription_form');
   $r->post('/inscription')->name('do_inscription')->to('Login#create');
+  
+  #Announce
+  $r->get('/announce')->to('announce#list');
+  $r->post('/announce_add')->to('announce#create');
+
   my $auth = $r->under('/')->to('Login#is_logged_in');
   $auth->get('/overview')->to('dashboard#overview');
   $r->get('/logout')->to('Login#logout');
