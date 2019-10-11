@@ -1,41 +1,72 @@
 % layout 'default';
 % title 'Jobeet';
 
+
 <header style="height: 50vh;background-image:url('/business.jpg');background-size: cover;background-position: center; background-repeat: no-repeat;">
 </header>
 </br></br>
- <div class="container h-100">
-    <div class="row h-100 align-items-center">
-	<div class="col-12 text-center">
-        <h2 class="font-weight-light">Page d'inscription</h2></br>
-<%= form_for '/inscription' => (method => "post") => (class => "form-horizontal") => (id => "inscription-form") => begin %>
-<form>
-    <fieldset>
-        <div class="control-group">
+<div class="container h-100">
+  <div class="row h-100 align-items-center">
+    <div class="col-12 text-center">
+      <h2 class="font-weight-light">Page d'inscription des candidats</h2></br>
+      <%= form_for '/inscription' => (method => "post") => (class => "form-horizontal") => (id => "inscription-form") => begin %>
+      <form>
+        <fieldset>
+          <div class="control-group">
             <div class="controls">
-                <input type="email" id="username" name="username" placeholder="Email" class="form-control">
+            <label>Email</label>
+              <input type="email" id="username" name="username" placeholder="exemple@test.fr" class="form-control" required>
             </div>
-        </div>
-		</br>
-        <div class="control-group">
+          </div>
+          </br>
+          <div class="control-group">
             <div class="controls">
-                <input type="password" id="password" name="password" placeholder="Mot de Passe" class="form-control">
+              <label>Mot de passe</label>
+              <input type="password" id="password" name="password" class="form-control" required>
             </div>
-        </div>
-        <div class="control-group">
+          </div>
+            </br>
+            <div class="control-group">
+              <div class="controls">
+                <label>Tags</label>
+                <input id="tag" name="tag" placeholder="Tag1, Tag2, Tag3 ..." class="form-control">
+              </div>
+            </div>
+
+            </br>
+            <div class="control-group">
+              <div class="controls">
+                <label>Nom</label>
+                <input id="nom" name="nom" class="form-control" required>
+              </div>
+            </div>
+            </br>
+            <div class="control-group">
+              <div class="controls">
+                <label>Prénom</label>
+                <input id="prenom" name="prenom" class="form-control" required>
+              </div>
+            </div>
+            </br>
+            <div class="control-group">
+              <div class="controls">
+                <label>Numéro de téléphone</label>
+                <input id="mobile" name="mobile" placeholder="XX XX XX XX XX" class="form-control" required >
+              </div>
+            </div>
             <!-- Button -->
 
             <div class="controls">
-			</br>
-                <button type="submit" class="btn btn-success">Inscription</button>
+              </br>
+              <button type="submit" class="btn btn-success">Inscription</button>
             </div>
-        </div>
-    </fieldset>
-</form>
-<% end %>
-      </div>
+          </div>
+        </fieldset>
+      </form>
+      <% end %>
     </div>
   </div>
+</div>
 
- 
+
 </p>

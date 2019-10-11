@@ -1,6 +1,7 @@
 % layout 'default';
 % title 'Jobeet';
 
+
 <!-- Full Page Image Header with Vertically Centered Content -->
 <header style="height: 40vh;background-image:url('/business.jpg');background-size: cover; background-repeat: no-repeat;">
 </header>

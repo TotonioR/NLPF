@@ -1,4 +1,5 @@
 package Jobeet;
+use Mojolicious::Sessions;
 use Mojo::Base 'Mojolicious';
 use DBI;
 use strict;
@@ -24,24 +25,18 @@ sub startup {
   $r->get('/')->to('Jobeet#welcome');
   $r->get('/login')->name('login_form')->to(template => 'login/login_form');
   $r->post('/login')->name('do_login')->to('Login#on_user_login');
+  $r->get('/inscription_recruteur')->name('inscription_recruteur')->to(template => 'login/inscription_recruteur_form');
+  $r->post('/inscription_recruteur')->name('do_inscription_recruteur')->to('Login#create_recruteur');
   $r->get('/inscription')->name('inscription')->to(template => 'login/inscription_form');
   $r->post('/inscription')->name('do_inscription')->to('Login#create');
-  my $auth = $r->under('/dashboard')->to('Login#is_logged_in');
-  $auth->get('/overview')->name('overview')->to('dashboard#overview');
   
   #Announce
   $r->get('/announce')->to('announce#list');
   $r->post('/announce_add')->to('announce#create');
 
-  $r->route('/logout')->name('do_logout')->to(cb => sub {
-   my $self = shift;
-
-   # Expire the session (deleted upon next request)
-   $self->session(expires => 1);
-
-   # Go back to home
-   $self->redirect_to('/');
-   });
+  my $auth = $r->under('/')->to('Login#is_logged_in');
+  $auth->get('/overview')->to('dashboard#overview');
+  $r->get('/logout')->to('Login#logout');
 }
 
 1;
