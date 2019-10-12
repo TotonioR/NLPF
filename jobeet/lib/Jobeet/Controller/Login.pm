@@ -14,7 +14,6 @@ sub user_exists {
 # Called upon form submit
 sub on_user_login {
   my $self = shift;
-
   # Grab the request parameters
   my $email = $self->param('username');
   my $password = $self->param('password');
