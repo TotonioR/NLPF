@@ -27,6 +27,7 @@ sub startup {
   $r->post('/login')->name('do_login')->to('Login#on_user_login');
   $r->get('/inscription_recruteur')->name('inscription_recruteur')->to(template => 'login/inscription_recruteur_form');
   $r->post('/inscription_recruteur')->name('do_inscription_recruteur')->to('Login#create_recruteur');
+  $r->get('/consultprofil')->name('consultprofil')->to('Profilrecruteur#consultprofil');
   $r->get('/inscription')->name('inscription')->to(template => 'login/inscription_form');
   $r->post('/inscription')->name('do_inscription')->to('Login#create');
   my $auth = $r->under('/')->to('Login#is_logged_in');
