@@ -21,7 +21,7 @@ sub on_user_login {
   my $user = $self->db->resultset('User')->search({ email => $email, password => $password })->first;
   return $self->render unless defined $user;
   $self->session(user => $user->email);
-  $self->redirect_to('profil');
+  $self->redirect_to('overview');
 }
 
 sub is_logged_in {
