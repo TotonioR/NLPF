@@ -14,13 +14,14 @@ sub user_exists {
 # Called upon form submit
 sub on_user_login {
   my $self = shift;
+
   # Grab the request parameters
   my $email = $self->param('username');
   my $password = $self->param('password');
   my $user = $self->db->resultset('User')->search({ email => $email, password => $password })->first;
   return $self->render unless defined $user;
-  $self->session(user => $user);
-  $self->redirect_to('overview');
+  $self->session(user => $user->email);
+  $self->redirect_to('profil');
 }
 
 sub is_logged_in {
@@ -51,7 +52,7 @@ sub create {
 				prenom => $prenom,
 				mobile => $mobile,
 			});
-			print ref($tags);
+			$self->flash(post_saved => 1);
 			my @tmp = split(/[,]/, $tags);
 			foreach my $i (@tmp)
 			{
@@ -59,6 +60,7 @@ sub create {
 					name => $i,
 					user_id => $user->id,
 				 });
+				 $self->flash(post_saved => 1);
 			}
 			$self->redirect_to('login_form');
 	}
@@ -91,4 +93,5 @@ sub logout {
      $self->session(expires => 1);
      $self->redirect_to('/');
 }
+
 1;
