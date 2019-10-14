@@ -40,6 +40,8 @@ sub create {
 	my $nom = $self->param('nom');
 	my $prenom = $self->param('prenom');
 	my $mobile = $self->param('mobile');
+	my $study = $self->param('study');
+	my $description = $self->param('description');
 	my $tags = $self->param('tag');
 	if (my $user = $self->user_exists($username)) {
 		$self->render(text => 'User already exists', status => 403);
@@ -51,6 +53,8 @@ sub create {
 				nom => $nom,
 				prenom => $prenom,
 				mobile => $mobile,
+				study => $study,
+				description => $description,
 			});
 			$self->flash(post_saved => 1);
 			my @tmp = split(/[,]/, $tags);

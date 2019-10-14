@@ -74,6 +74,28 @@
                 <input id="mobile" name="mobile" placeholder="XX XX XX XX XX" class="form-control" required >
               </div>
             </div>
+            </br>
+            <div class="control-group">
+              <div class="controls">
+                <label>Description</label>
+                <input type="text" id="description" name="description" >
+              </div>
+            </div>
+             </br>
+            <div class="control-group">
+              <div class="controls">
+                <label>Niveau d'étude</label>
+                <select  id="study" name="study">
+                  <option>Bac</option>
+                  <option>Bac +1</option>
+                  <option>Bac +2</option>
+                  <option>Bac +3</option>
+                  <option>Bac +4</option>
+                  <option>Bac +5</option>
+                </select>
+                  <!--Dropdown to add -->
+              </div>
+            </div>
             <!-- Button -->
 
             <div class="controls">

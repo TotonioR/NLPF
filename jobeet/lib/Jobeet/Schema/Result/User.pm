@@ -35,6 +35,14 @@ __PACKAGE__->add_columns(
      mobile => {
          data_type => 'text',
      },
+
+     study => {
+         data_type => 'text'
+     },
+
+     description => {
+         data_type => 'text'
+     },
  );
 
  # Tell DBIC that 'id' is the primary key
