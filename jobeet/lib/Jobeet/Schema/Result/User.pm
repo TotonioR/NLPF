@@ -22,27 +22,7 @@ __PACKAGE__->add_columns(
 	 
 	 recruteur => {
          data_type => 'integer',
-     },
-
-     nom => {
-         data_type => 'text',
-     },
-
-     prenom => {
-         data_type => 'text',
-     },
-
-     mobile => {
-         data_type => 'text',
-     },
-
-     study => {
-         data_type => 'text'
-     },
-
-     description => {
-         data_type => 'text'
-     },
+     }
  );
 
  # Tell DBIC that 'id' is the primary key
@@ -52,4 +32,13 @@ __PACKAGE__->add_columns(
      'user_id'
  );
 
+ __PACKAGE__->might_have(
+     profile => 'Jobeet::Schema::Result::ProfileRecruteur',
+     'user_id'
+ );
+
+  __PACKAGE__->might_have(
+     profile => 'Jobeet::Schema::Result::ProfileCandidat',
+     'user_id'
+ );
 1;

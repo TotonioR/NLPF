@@ -20,7 +20,7 @@ sub on_user_login {
   my $password = $self->param('password');
   my $user = $self->db->resultset('User')->search({ email => $email, password => $password })->first;
   return $self->render unless defined $user;
-  $self->session(user => $user->email);
+  $self->session(user => $user->id);
   $self->redirect_to('overview');
 }
 
@@ -50,13 +50,15 @@ sub create {
 				email => $username,
 				password => $password,
 				recruteur => 0,
+			});
+			my $profile = $self->db->resultset('ProfileCandidat')->create({
 				nom => $nom,
 				prenom => $prenom,
 				mobile => $mobile,
 				study => $study,
 				description => $description,
+				user_id => $user->id,
 			});
-			$self->flash(post_saved => 1);
 			my @tmp = split(/[,]/, $tags);
 			foreach my $i (@tmp)
 			{
@@ -64,7 +66,6 @@ sub create {
 					name => $i,
 					user_id => $user->id,
 				 });
-				 $self->flash(post_saved => 1);
 			}
 			$self->redirect_to('login_form');
 	}
@@ -84,9 +85,13 @@ sub create_recruteur {
 			email => $username,
 			password => $password,
 			recruteur => 1,
+		});
+		my $profile = $self->db->resultset('ProfileRecruteur')->create({
 			nom => $nom,
 			prenom => $prenom,
 			mobile => $mobile,
+			company => '',
+			user_id => $user->id,
 		});
 		$self->redirect_to('login_form');
 	}
