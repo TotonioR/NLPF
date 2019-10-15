@@ -4,6 +4,7 @@ use Mojo::Base 'Mojolicious::Controller';
 # This action will render a template
 sub profil {
     my $self = shift;
+    return $self->reply->not_found unless $self->session('user');
     my $id = $self->session('user');
     my $user = $self->db->resultset('User')->search({id => $id})->first;
     my $profile = $self->db->resultset('ProfileRecruteur')->search({user_id => $id})->first;
