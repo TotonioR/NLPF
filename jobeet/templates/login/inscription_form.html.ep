@@ -54,6 +54,27 @@
                 <input id="mobile" name="mobile" placeholder="XX XX XX XX XX" class="form-control" required >
               </div>
             </div>
+            </br>
+            <div class="control-group">
+              <div class="controls">
+                <label>Description</label>
+                <textarea class="form-control rounded-0" id="description" name="description"  rows="6"></textarea>
+              </div>
+            </div>
+             </br>
+            <div class="control-group">
+              <div class="controls">
+                <label>Niveau d'étude</label>
+                <select  id="study" name="study">
+                  <option>Bac</option>
+                  <option>Bac +1</option>
+                  <option>Bac +2</option>
+                  <option>Bac +3</option>
+                  <option>Bac +4</option>
+                  <option>Bac +5</option>
+                </select>
+              </div>
+            </div>
             <!-- Button -->
 
             <div class="controls">
@@ -67,6 +88,3 @@
     </div>
   </div>
 </div>
-
-
-</p>

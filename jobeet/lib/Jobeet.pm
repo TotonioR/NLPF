@@ -33,7 +33,9 @@ sub startup {
   #Announce
   $r->get('/announce')->to('announce#list');
   $r->post('/announce_add')->to('announce#create');
-
+  #Profil
+  $r->get('/profil')->name('profil')->to('Profil#profil');
+  
   my $auth = $r->under('/')->to('Login#is_logged_in');
   $auth->get('/overview')->to('dashboard#overview');
   $r->get('/logout')->to('Login#logout');

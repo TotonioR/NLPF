@@ -20,7 +20,7 @@ sub on_user_login {
   my $password = $self->param('password');
   my $user = $self->db->resultset('User')->search({ email => $email, password => $password })->first;
   return $self->render unless defined $user;
-  $self->session(user => $user);
+  $self->session(user => $user->id);
   $self->redirect_to('overview');
 }
 
@@ -40,6 +40,8 @@ sub create {
 	my $nom = $self->param('nom');
 	my $prenom = $self->param('prenom');
 	my $mobile = $self->param('mobile');
+	my $study = $self->param('study');
+	my $description = $self->param('description');
 	my $tags = $self->param('tag');
 	if (my $user = $self->user_exists($username)) {
 		$self->render(text => 'User already exists', status => 403);
@@ -48,11 +50,15 @@ sub create {
 				email => $username,
 				password => $password,
 				recruteur => 0,
+			});
+			my $profile = $self->db->resultset('ProfileCandidat')->create({
 				nom => $nom,
 				prenom => $prenom,
 				mobile => $mobile,
+				study => $study,
+				description => $description,
+				user_id => $user->id,
 			});
-			print ref($tags);
 			my @tmp = split(/[,]/, $tags);
 			foreach my $i (@tmp)
 			{
@@ -79,9 +85,13 @@ sub create_recruteur {
 			email => $username,
 			password => $password,
 			recruteur => 1,
+		});
+		my $profile = $self->db->resultset('ProfileRecruteur')->create({
 			nom => $nom,
 			prenom => $prenom,
 			mobile => $mobile,
+			company => '',
+			user_id => $user->id,
 		});
 		$self->redirect_to('login_form');
 	}
@@ -92,4 +102,5 @@ sub logout {
      $self->session(expires => 1);
      $self->redirect_to('/');
 }
+
 1;
