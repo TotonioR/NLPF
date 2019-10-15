@@ -1,5 +1,12 @@
 % layout 'default';
 % title 'Jobeet';
-<h2>Erreur 404 Not Found</h2>
-<p>
-</p>
+<header style="height: 50vh;background-image:url('/business.jpg');background-size: cover;background-position: center; background-repeat: no-repeat;">
+</header>
+</br></br>
+ <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 text-center">
+        <h2 class="font-weight-light">Erreur 404 Not Found</h2>
+      </div>
+    </div>
+  </div>
