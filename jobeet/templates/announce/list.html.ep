@@ -6,6 +6,7 @@
 </header>
 </br></br>
 <div class="container h-100">
+<div class="container emp-profile">
   <div class="row h-100 align-items-center">
     <div class="col-12 text-center">
       <h2 class="font-weight-light">Ajoutez une annonce</h2>
@@ -35,11 +36,14 @@
       <% end %>
     </div>
   </div>
+  <div class="container emp-profile">
 </div>
 <!-- Page Content -->
 <div class="container">
+<div class="container emp-profile">
   <h2 class="font-weight-light">Liste des annonces</h2>
   % while (my $announce = $announces->next) {
         <li> <%= $announce->title %> </li>
   % }
+  </div>
 </div>

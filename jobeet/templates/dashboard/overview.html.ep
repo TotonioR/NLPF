@@ -6,6 +6,7 @@
 </header>
 </br></br>
  <div class="container h-100">
+ <div class="container emp-profile">
     <div class="row h-100 align-items-center">
       <div class="col-12 text-center">
         <h2 class="font-weight-light"><%= $msg %></h2>
@@ -13,8 +14,4 @@
       </div>
     </div>
   </div>
-<!-- Page Content -->
-  <div class="container">
-    <h2 class="font-weight-light">Page Content</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ab nulla dolorum autem nisi officiis blanditiis voluptatem hic, assumenda aspernatur facere ipsam nemo ratione cumque magnam enim fugiat reprehenderit expedita.</p>
   </div>

@@ -7,6 +7,7 @@
 </header>
 </br></br>
 <div class="container h-100">
+  <div class="container emp-profile">
   <div class="row h-100 align-items-center">
     <div class="col-12 text-center">
       <h2 class="font-weight-light">Page de connexion</h2></br>
@@ -60,5 +61,6 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </div>
