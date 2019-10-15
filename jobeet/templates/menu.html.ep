@@ -19,6 +19,9 @@
                     <a class="nav-link" href="/announce">Annonces</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/messagerie">Messagerie</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/logout">Se déconnecter</a>
                 </li>
               %} else {

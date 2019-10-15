@@ -1,0 +1,58 @@
+% layout 'default';
+% title 'Jobeet';
+%= include 'menu', status => $status
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header style="height: 40vh;background-image:url('/business.jpg');background-size: cover; background-repeat: no-repeat;">
+</header>
+<!-- Page Content -->
+<div class="container">
+  <div class="container emp-profile">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">Trouver votre contact</button>
+  <div class="col-12 text-center">
+    <h2 class="font-weight-light">Messagerie</h2>
+    % if($conv->count eq 0){
+      <h3>Aucune conversation</h3>
+    %}
+    % while (my $c = $conv->next) {
+          <li> <%= $c->id %> </li>
+    % }
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="Modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Recherche de contact</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_for '/messagerie_create' => (method => "post") => (class => "form-horizontal") => (id => "messagerie-form") => begin %>
+        <div class="modal-body">
+          <div class="control-group">
+            <div class="controls">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Qui voulez-vous contacter ? </label>
+                  </div>
+                  <select  id="name" name="name" class="selectpicker" data-live-search="true">
+                    % while (my $u = $user1->next) {
+                      <option> <%= $u->nom." ".$u->prenom %> </option>
+                    % }
+                    % while (my $u = $user2->next) {
+                      <option> <%= $u->nom." ".$u->prenom %> </option>
+                    % }
+                  </select>
+                </div>
+              </div>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-success">Contacter</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
