@@ -1,6 +1,6 @@
 % layout 'default';
 % title 'Jobeet';
-
+%= include 'menu', status => undef
 <header
   style="height: 50vh;background-image:url('/business.jpg');background-size: cover;background-position: center; background-repeat: no-repeat;">
 

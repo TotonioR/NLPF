@@ -6,7 +6,8 @@ sub overview {
   my $self = shift;
   return $self->reply->not_found unless $self->session('user');
   # Render template "example/welcome.html.ep" with message
-  $self->render(msg => 'Dashboard');
+  my $status = $self->session('user');
+  $self->render(msg => 'Dashboard', status => $status);
 }
 
 1;
