@@ -36,7 +36,7 @@ sub startup {
   #Profil
   $r->get('/profil')->name('profil')->to('Profil#profil');
   $r->get('/messagerie')->name('messagerie')->to('Messagerie#list');
-  $r->get('/messagerie_create')->to('Messagerie#create');
+  $r->post('/messagerie_create')->to('Messagerie#create');
   
   my $auth = $r->under('/')->to('Login#is_logged_in');
   $auth->get('/overview')->to('dashboard#overview');

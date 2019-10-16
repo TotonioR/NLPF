@@ -14,7 +14,22 @@
       <h3>Aucune conversation</h3>
     %}
     % while (my $c = $conv->next) {
-          <li> <%= $c->id %> </li>
+          <div class="card">
+    <a href="/event/{{event.id}}">
+    <div class="card-body">
+        <h6 class="card-title">
+        % if($c->user_id1 eq $status) {
+            <%=$c->user_name2 %>
+          %} else {
+            <%=$c->user_name1%>
+          %}
+        </h6>
+        <p class="card-text">
+        </p>
+    </div>
+    </a>
+</div>
+
     % }
     </div>
   </div>

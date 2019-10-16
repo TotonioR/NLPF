@@ -20,6 +20,14 @@ __PACKAGE__->add_columns(
      user_id2 => {
          data_type => 'integer',
          is_foreign_key => 1,
+     },
+     
+     user_name1 => {
+         data_type => 'text',
+     },
+
+     user_name2 => {
+         data_type => 'text',
      }
  );
 
@@ -31,5 +39,8 @@ __PACKAGE__->add_columns(
  __PACKAGE__->belongs_to(
             user => 'Jobeet::Schema::Result::User',
             'user_id2');
-
+ __PACKAGE__->has_many(
+     messages => 'Jobeet::Schema::Result::Message',
+     'conv_id'
+ );
 1;
