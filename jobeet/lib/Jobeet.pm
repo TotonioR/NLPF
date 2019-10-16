@@ -23,7 +23,7 @@ sub startup {
 
   # Normal route to controller
   $r->get('/')->to('Jobeet#welcome');
-  $r->get('/login')->name('login_form')->to(template => 'login/login_form');
+  $r->get('/login')->name('login_form')->to(template => 'login/login_form', error => 0);
   $r->post('/login')->name('do_login')->to('Login#on_user_login');
   $r->get('/inscription_recruteur')->name('inscription_recruteur')->to(template => 'login/inscription_recruteur_form');
   $r->post('/inscription_recruteur')->name('do_inscription_recruteur')->to('Login#create_recruteur');

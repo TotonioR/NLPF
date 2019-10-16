@@ -10,6 +10,11 @@
   <div class="container emp-profile">
     <div class="row h-100 align-items-center">
       <div class="col-12 text-center">
+      % if($error eq 1){
+    <div class="alert alert-danger" role="alert">
+      Compte introuvable : Email ou Mot de Passe erroné
+      </div>
+    %}
         <h2 class="font-weight-light">Page de connexion</h2><br/>
         <%= form_for '/login' => (method => "post") => (class => "form-horizontal") => (id => "login-form") => begin %>
         <form>
