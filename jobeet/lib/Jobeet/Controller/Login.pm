@@ -19,7 +19,7 @@ sub on_user_login {
   my $email = $self->param('username');
   my $password = $self->param('password');
   my $user = $self->db->resultset('User')->search({ email => $email, password => $password })->first;
-  return $self->render unless defined $user;
+  return $self->redirect_to('/login') unless defined $user;
   $self->session(user => $user->id);
   $self->redirect_to('overview');
 }
