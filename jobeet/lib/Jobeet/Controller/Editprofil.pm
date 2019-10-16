@@ -16,14 +16,12 @@ sub editprofil {
 sub modifyprofil {
 	my $self = shift;
 	my $id = $self->session('user');
-	my $username = $self->param('username');
 	my $password = $self->param('password');
 	my $nom = $self->param('nom');
 	my $prenom = $self->param('prenom');
 	my $mobile = $self->param('mobile');
 	my $user = $self->db->resultset('User')->update(
 		{
-			email => $username,
 			password  => $password,
 		},
 		{ id => $id }
@@ -32,7 +30,6 @@ sub modifyprofil {
 	if ($user->recruteur eq 0) {
 		my $study = $self->param('study');
 		my $description = $self->param('description');
-		my $tags = $self->param('tag');
 		my $profile = $self->db->resultset('ProfileCandidat')->update({
 			nom         => $nom,
 			prenom      => $prenom,

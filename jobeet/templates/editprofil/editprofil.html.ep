@@ -15,13 +15,6 @@
         <fieldset>
           <div class="control-group">
             <div class="controls">
-            <label>Email</label>
-              <input type="email" id="username" name="username" value='<%= $user->email %>' class="form-control">
-            </div>
-          </div>
-          <br/>
-          <div class="control-group">
-            <div class="controls">
               <label>Mot de passe</label>
               <input type="password" id="password" name="password"  value='<%= $user->password %>' class="form-control">
             </div>
