@@ -33,6 +33,7 @@ sub startup {
   #Announce
   $r->get('/announce')->to('announce#list');
   $r->post('/announce_add')->to('announce#create');
+  $r->post('/link_announce')->to('announce#submit');
   #Profil
   $r->get('/profil')->name('profil')->to('Profil#profil');
   #Edit profil
@@ -50,3 +51,4 @@ sub startup {
 }
 
 1;
+
