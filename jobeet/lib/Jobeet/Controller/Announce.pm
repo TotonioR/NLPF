@@ -1,8 +1,6 @@
 package Jobeet::Controller::Announce;
 use Mojo::Base 'Mojolicious::Controller';
 
-
-
 sub create {
 	my $self = shift;
 	my $title = $self->param('title');
@@ -40,7 +38,8 @@ sub list {
  	my $profile = $self->db->resultset('ProfileCandidat')->search({user_id => $id})->first;
 	my $is_candidat = defined $profile;
 	my $announces = $self->db->resultset('Announce')->search({});
-	$self->render(announces => $announces, status => $id, is_candidat => $is_candidat, tags => $self->db->resultset('TagAnnounce'));
+	my $user_tags = $self->db->resultset('Tag')->search({user_id => $id});
+	$self->render(announces => $announces, status => $id, is_candidat => $is_candidat, tags => $self->db->resultset('TagAnnounce'), user_tags => $user_tags);
 }
 
 1;

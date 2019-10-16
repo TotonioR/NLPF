@@ -85,7 +85,21 @@
                         <% } %>
                       <% } %>
                 </td>
-                <td> 18% </td>
+                <td>  
+                      % my $match = 0;
+                      % my $length = 0;
+                      <% while (my $tag = $tags->next) { %>
+                        <% if ($tag->announce_id == $announce->id) { %>
+                            <% while (my $user_tag = $user_tags->next) { %> 
+                              <% if ($user_tag->name == $tag->name) { %>
+                                    % $match = $match + 1;
+                              <% } %>
+                            <% } %>
+                            % $length = $length + 1;
+                        <% } %>
+                      <% } %>
+                      <span> <%= ($match * 100) / ($length + 1) %> </span>
+                </td>
                 <td> <%= button_to Submit => 'announce' %> </td>
               </tr>
           % }
