@@ -13,7 +13,10 @@ sub profil {
     }
     my $tags = $self->db->resultset('Tag')->search({user_id => $id});
     $profile = $self->db->resultset('ProfileCandidat')->search({user_id => $id})->first;
-    $self->render(user => $user, profile => $profile, type => "Candidat", status => $id, tag => $tags);
+
+    my $announceusers = $self->db->resultset('AnnounceUser')->search({user_id => $id});
+
+    $self->render(user => $user, profile => $profile, type => "Candidat", status => $id, tag => $tags, announceusers => $announceusers);
 }
 
 1;
