@@ -23,7 +23,7 @@
           % while (my $m = $msg->next) {
             % if($status eq $m->user_id){
               <small class="float-right">
-              % if($c->user_id1 eq $status) {
+              % if($c->user_id2 eq $status) {
                 <%=$c->user_name2 %>
               %} else {
                 <%=$c->user_name1%>
