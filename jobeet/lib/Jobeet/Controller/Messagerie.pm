@@ -25,8 +25,20 @@ sub create {
 sub conversation {
   my $self = shift;
   my $conv_id = $self->param('conv_id');
-  my $conv = $self->db->resultset('Conversation')->search({id => $conv_id});
-  $self->render(conv => $conv);
+	my $status = $self->session('user');
+  my $conv = $self->db->resultset('Conversation')->search({id => $conv_id})->first;
+  my $messages = $self->db->resultset('Message')->search({conv_id => $conv_id}, {order_by => { -asc => 'id' }});
+  $self->render(c => $conv, status => $status, msg => $messages, id => $conv->id);
+}
+
+sub send_message {
+  my $self = shift;
+	my $status = $self->session('user');
+  my $conv_id = $self->param('conv_id');
+  my $msg = $self->param('msg');
+  my $dt = time;
+  $self->db->resultset('Message')->create({message => $msg, user_id => $status, conv_id => $conv_id, date => $dt});
+  $self->redirect_to('/messagerie/'.$conv_id);
 }
 
 sub list {

@@ -1,0 +1,39 @@
+% layout 'default';
+% title 'Jobeet';
+%= include 'menu', status => $status
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header style="height: 40vh;background-image:url('/business.jpg');background-size: cover; background-repeat: no-repeat;">
+</header>
+<!-- Page Content -->
+<div class="container">
+  <div class="container emp-profile">
+    <a role="button" class="btn btn-primary" href="/messagerie">Retour</a>
+    <div class="text-center">
+      <h2 class="font-weight-light">Conversation avec 
+      % if($c->user_id1 eq $status) {
+              <%=$c->user_name2 %>
+            %} else {
+              <%=$c->user_name1%>
+            %}
+            </h2>
+            </br>
+          % if($msg->count eq 0){
+            <h3>Aucun message</h3>
+          %}
+          % while (my $m = $msg->next) {
+            % if($status eq $m->user_id){
+              <div class="float-right message"><%= $m->message %></div>
+            %} else {
+              <div class="float-left message"><%= $m->message %></div>
+            %}
+            </br>
+            </br>
+          %}
+          <%= form_for "/messagerie/$id/send" => (method => "post") => (class => "in-line") => (id => "messagerie-form") => begin %>
+            <input class="form-control rounded-0" id="msg" name="msg">
+            <button type="submit" class="btn btn-success">Envoyer le message</button>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
