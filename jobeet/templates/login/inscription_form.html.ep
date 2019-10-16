@@ -29,8 +29,8 @@
             <br/>
             <div class="control-group">
               <div class="controls">
-                <label>Tags</label>
-                <input id="tag" name="tag" placeholder="Tag1, Tag2, Tag3 ..." class="form-control">
+                <label>Compétences</label>
+                <input id="tag" name="tag" placeholder="Tag1,Tag2,Tag3 ..." class="form-control">
               </div>
             </div>
 
