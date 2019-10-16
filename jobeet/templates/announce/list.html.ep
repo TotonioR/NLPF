@@ -91,7 +91,7 @@
                       <% while (my $tag = $tags->next) { %>
                         <% if ($tag->announce_id == $announce->id) { %>
                             <% while (my $user_tag = $user_tags->next) { %> 
-                              <% if ($user_tag->name == $tag->name) { %>
+                              <% if ($user_tag->name eq $tag->name) { %>
                                     % $match += 1;
                               <% } %>
                             <% } %>
