@@ -22,13 +22,11 @@ sub create {
 	$self->redirect_to('messagerie');
 }
 
-sub get_profile {
-  my ($self, $id) = @_;
-  my $profile = $self->db->resultset('ProfileCandidat')->search({user_id => $id})->first;
-  if (!defined $profile) {
-    $profile = $self->db->resultset('ProfileRecruteur')->search({user_id => $id})->first;
-  }
-  return $profile;
+sub conversation {
+  my $self = shift;
+  my $conv_id = $self->param('conv_id');
+  my $conv = $self->db->resultset('Conversation')->search({id => $conv_id});
+  $self->render(conv => $conv);
 }
 
 sub list {

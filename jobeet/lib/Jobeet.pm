@@ -35,6 +35,8 @@ sub startup {
   $r->post('/announce_add')->to('announce#create');
   #Profil
   $r->get('/profil')->name('profil')->to('Profil#profil');
+    #Profil
+  $r->get('/messagerie/<conv_id:num>')->name('conversation')->to('Messagerie#conversation');
   $r->get('/messagerie')->name('messagerie')->to('Messagerie#list');
   $r->post('/messagerie_create')->to('Messagerie#create');
   

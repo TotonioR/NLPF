@@ -15,7 +15,7 @@
     %}
     % while (my $c = $conv->next) {
           <div class="card">
-    <a href="/event/{{event.id}}">
+    <a href="/messagerie/<%= $c->id %>">
     <div class="card-body">
         <h6 class="card-title">
         % if($c->user_id1 eq $status) {
