@@ -35,7 +35,11 @@ sub startup {
   $r->post('/announce_add')->to('announce#create');
   #Profil
   $r->get('/profil')->name('profil')->to('Profil#profil');
-  
+  #Messagerie
+  $r->get('/messagerie/<conv_id:num>')->name('conversation')->to('Messagerie#conversation');
+  $r->get('/messagerie')->name('messagerie')->to('Messagerie#list');
+  $r->post('/messagerie_create')->to('Messagerie#create');
+  $r->post('/messagerie/<conv_id:num>/send')->name('conversation')->to('Messagerie#send_message');
   my $auth = $r->under('/')->to('Login#is_logged_in');
   $auth->get('/overview')->to('dashboard#overview');
   $r->get('/logout')->to('Login#logout');

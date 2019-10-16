@@ -93,3 +93,9 @@ body{
     font-weight: 600;
     color: #0062cc;
 }
+.message {
+    border-radius: 12px;
+    background: #0062cc;
+    color: white;
+    padding: 8px;
+}

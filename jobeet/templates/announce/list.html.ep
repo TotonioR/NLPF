@@ -6,37 +6,37 @@
 </header>
 </br></br>
 <div class="container h-100">
-<div class="container emp-profile">
-  <div class="row h-100 align-items-center">
-    <div class="col-12 text-center">
-      <h2 class="font-weight-light">Ajoutez une annonce</h2>
-      <%= form_for '/announce_add' => (method => "post") => (class => "form-horizontal") => (id => "announce-form") => begin %>
-        <form>
-          <fieldset>
-            <div class="control-group">
-                <div class="controls">
-                    <input type="text" id="title" name="title" placeholder="Titre" class="form-control">
-                </div>
-            </div>
-            </br>
-            <div class="control-group">
-                <div class="controls">
-                    <input type="text" id="description" name="description" placeholder="Description" class="form-control">
-                </div>
-            </div>
-            <div class="control-group">
-              <!-- Button -->
-              <div class="controls">
-                </br>
-                <button type="submit" class="btn btn-success">Ajouter</button>
+  <div class="container emp-profile">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 text-center">
+        <h2 class="font-weight-light">Ajoutez une annonce</h2>
+        <%= form_for '/announce_add' => (method => "post") => (class => "form-horizontal") => (id => "announce-form") => begin %>
+          <form>
+            <fieldset>
+              <div class="control-group">
+                  <div class="controls">
+                      <input type="text" id="title" name="title" placeholder="Titre" class="form-control">
+                  </div>
               </div>
-            </div>
-          </fieldset>
-        </form>
-      <% end %>
+              </br>
+              <div class="control-group">
+                  <div class="controls">
+                      <input type="text" id="description" name="description" placeholder="Description" class="form-control">
+                  </div>
+              </div>
+              <div class="control-group">
+                <!-- Button -->
+                <div class="controls">
+                  </br>
+                  <button type="submit" class="btn btn-success">Ajouter</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="container emp-profile">
 </div>
 <!-- Page Content -->
 <div class="container">
