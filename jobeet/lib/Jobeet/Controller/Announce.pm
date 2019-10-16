@@ -26,6 +26,27 @@ sub create {
 	$self->redirect_to('announce');
 }
 
+sub submit {
+	my $self = shift;
+	return $self->redirect_to('login_form') unless $self->session('user');
+
+	my $announce = $self->param('announce');
+	my $id = $self->session('user');
+	my $match = $self->session('match');
+	my $profile = $self->db->resultset('ProfileRecruteur')->search({user_id => $id})->first;
+	if (defined $profile) {
+		return $self->redirect_to('announce');
+	}
+
+	$self->db->resultset('AnnounceUser')->create({
+			match => int($match),
+			user_id => $id,
+			announce_id => $announce,
+	});
+
+	$self->redirect_to('announce');
+}
+
 sub list {
 	my $self = shift;
 
