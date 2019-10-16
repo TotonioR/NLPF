@@ -6,44 +6,105 @@
 </header>
 <br/><br/>
 <div class="container h-100">
-  <div class="container emp-profile">
-    <div class="row h-100 align-items-center">
-      <div class="col-12 text-center">
-        <h2 class="font-weight-light">Ajoutez une annonce</h2>
-        <%= form_for '/announce_add' => (method => "post") => (class => "form-horizontal") => (id => "announce-form") => begin %>
-          <form>
-            <fieldset>
-              <div class="control-group">
-                  <div class="controls">
-                      <input type="text" id="title" name="title" placeholder="Titre" class="form-control">
-                  </div>
-              </div>
-              <br/>
-              <div class="control-group">
-                  <div class="controls">
-                      <input type="text" id="description" name="description" placeholder="Description" class="form-control">
-                  </div>
-              </div>
-              <div class="control-group">
-                <!-- Button -->
-                <div class="controls">
-                  <br/>
-                  <button type="submit" class="btn btn-success">Ajouter</button>
+  <% if (!$is_candidat) { %>
+    <div class="container emp-profile">
+      <div class="row h-100 align-items-center">
+        <div class="col-12 text-center">
+          <h2 class="font-weight-light">Ajoutez une annonce</h2>
+          <%= form_for '/announce_add' => (method => "post") => (class => "form-horizontal") => (id => "announce-form") => begin %>
+            <form>
+              <fieldset>
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" id="title" name="title" placeholder="Titre" class="form-control">
+                    </div>
                 </div>
-              </div>
-            </fieldset>
-          </form>
-        <% end %>
+                </br>
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" id="description" name="description" placeholder="Description" class="form-control">
+                    </div>
+                </div>
+                </br>
+                <div class="control-group">
+                  <div class="controls">
+                    <input id="tag" name="tag" placeholder="Tag1, Tag2, Tag3 ..." class="form-control">
+                  </div>
+                </div>
+                </br>
+                <div class="control-group">
+                  <div class="controls">
+                    <label>Niveau d'étude</label>
+                    <select  id="study" name="study">
+                      <option>Bac</option>
+                      <option>Bac +1</option>
+                      <option>Bac +2</option>
+                      <option>Bac +3</option>
+                      <option>Bac +4</option>
+                      <option>Bac +5</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <!-- Button -->
+                  <div class="controls">
+                    </br>
+                    <button type="submit" class="btn btn-success">Ajouter</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          <% end %>
+        </div>
       </div>
+      <div class="container emp-profile">
     </div>
-  </div>
-</div>
-<!-- Page Content -->
-<div class="container">
-<div class="container emp-profile">
-  <h2 class="font-weight-light">Liste des annonces</h2>
-  % while (my $announce = $announces->next) {
-        <li> <%= $announce->title %> </li>
-  % }
+  <% } %>
+
+  <div class="container">
+    <div class="container emp-profile">
+      <h2 class="font-weight-light">Liste des annonces</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th> Titre </th>
+            <th> Description </th>
+            <th> Tags </th>
+            <th> % Matching </th>
+            <th> Postuler </th>
+          </tr>
+        </thead>
+        <tbody>
+          % while (my $announce = $announces->next) {
+              <tr>
+                <td> <%= $announce->title %> </td>
+                <td> <%= $announce->description %> </td>
+                <td>  <% while (my $tag = $tags->next) { %>
+                        <% if ($tag->announce_id == $announce->id) { %> 
+                            <span> <%= $tag->name %> </span> 
+                        <% } %>
+                      <% } %>
+                </td>
+                <td>  
+                      % my $match = 0;
+                      % my $length = 0;
+                      <% while (my $tag = $tags->next) { %>
+                        <% if ($tag->announce_id == $announce->id) { %>
+                            <% while (my $user_tag = $user_tags->next) { %> 
+                              <% if ($user_tag->name == $tag->name) { %>
+                                    % $match += 1;
+                              <% } %>
+                            <% } %>
+                            % $length += 1;
+                        <% } %>
+                      <% } %>
+                      <span> <%= ($match * 100) / ($length + 1) %> </span>
+                </td>
+                <td> <%= button_to Submit => 'announce' %> </td>
+              </tr>
+          % }
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
