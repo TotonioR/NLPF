@@ -23,8 +23,9 @@ sub create {
 
 sub list {
 	my $self = shift;
+	my $status = $self->session('user');
 	my $announces = $self->db->resultset('Announce')->search({});
-	$self->render(announces => $announces);
+	$self->render(announces => $announces, status => $status);
 }
 
 1;

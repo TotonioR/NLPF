@@ -32,6 +32,16 @@ __PACKAGE__->add_columns(
      'user_id'
  );
 
+ __PACKAGE__->has_many(
+     conv => 'Jobeet::Schema::Result::Conversation',
+     'user_id1'
+ );
+
+ __PACKAGE__->has_many(
+     conv => 'Jobeet::Schema::Result::Conversation',
+     'user_id2'
+ );
+
  __PACKAGE__->might_have(
      profile => 'Jobeet::Schema::Result::ProfileRecruteur',
      'user_id'
