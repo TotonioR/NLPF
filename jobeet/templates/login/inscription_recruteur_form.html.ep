@@ -4,12 +4,12 @@
 <header
   style="height: 50vh;background-image:url('/business.jpg');background-size: cover;background-position: center; background-repeat: no-repeat;">
 </header>
-</br></br>
+<br/><br/>
 <div class="container h-100">
 <div class="container emp-profile">
   <div class="row h-100 align-items-center">
     <div class="col-12 text-center">
-      <h2 class="font-weight-light">Page d'inscription des recruteurs</h2></br>
+      <h2 class="font-weight-light">Page d'inscription des recruteurs</h2><br/>
       <%= form_for '/inscription_recruteur' => (method => "post") => (class => "form-horizontal") => (id => "inscription-form") => begin %>
       <form>
         <fieldset>
@@ -19,38 +19,45 @@
               <input type="email" id="username" name="username" placeholder="exemple@test.fr" class="form-control" required>
             </div>
           </div>
-          </br>
+          <br/>
           <div class="control-group">
             <div class="controls">
               <label>Mot de passe</label>
               <input type="password" id="password" name="password" class="form-control" required>
             </div>
           </div>
-          </br>
+          <br/>
           <div class="control-group">
             <div class="controls">
               <label>Nom</label>
               <input id="nom" name="nom" class="form-control" required>
             </div>
           </div>
-          </br>
+          <br/>
           <div class="control-group">
             <div class="controls">
               <label>Prénom</label>
               <input id="prenom" name="prenom" class="form-control" required>
             </div>
           </div>
-          </br>
+          <br/>
           <div class="control-group">
             <div class="controls">
               <label>Numéro de téléphone</label>
               <input id="mobile" name="mobile" placeholder="XX XX XX XX XX" class="form-control" required >
             </div>
           </div>
+          <br/>
+          <div class="control-group">
+            <div class="controls">
+              <label>Compagnie</label>
+              <input id="company" name="company" class="form-control" required >
+            </div>
+          </div>
           <!-- Button -->
 
           <div class="controls">
-            </br>
+            <br/>
             <button type="submit" class="btn btn-success">Inscription</button>
           </div>
         </fieldset>

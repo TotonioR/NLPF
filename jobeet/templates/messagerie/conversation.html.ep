@@ -1,0 +1,54 @@
+% layout 'default';
+% title 'Jobeet';
+%= include 'menu', status => $status
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header style="height: 40vh;background-image:url('/business.jpg');background-size: cover; background-repeat: no-repeat;">
+</header>
+<!-- Page Content -->
+<div class="container">
+  <div class="container emp-profile">
+    <div class="text-center">
+    <a role="button" class="btn btn-primary float-left" href="/messagerie">Retour</a>
+      <h2 class="font-weight-light">Conversation avec 
+      % if($c->user_id1 eq $status) {
+              <%=$c->user_name2 %>
+            %} else {
+              <%=$c->user_name1%>
+            %}
+            </h2>
+            <br />
+          % if($msg->count eq 0){
+            <h3>Aucun message</h3>
+          %}
+          % while (my $m = $msg->next) {
+            % if($status eq $m->user_id){
+              <small class="float-right">
+              % if($c->user_id1 eq $status) {
+                <%=$c->user_name2 %>
+              %} else {
+                <%=$c->user_name1%>
+              %}
+              </small><br />
+              <div class="float-right message"><%= $m->message %></div>
+            %} else {
+              <small class="float-left">
+              % if($c->user_id1 eq $status) {
+                <%=$c->user_name2 %>
+              %} else {
+                <%=$c->user_name1%>
+              %}
+              </small><br />
+              <div class="float-left message"><%= $m->message %></div>
+            %}
+            <br />
+            <br />
+          %}
+          <%= form_for "/messagerie/$id/send" => (method => "post") => (class => "in-line") => (id => "messagerie-form") => begin %>
+            <input class="form-control rounded-0" id="msg" name="msg">
+            <br />
+            <button type="submit" class="btn btn-success">Envoyer le message</button>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
