@@ -78,6 +78,7 @@ sub create_recruteur {
 	my $nom = $self->param('nom');
 	my $prenom = $self->param('prenom');
 	my $mobile = $self->param('mobile');
+	my $company = $self->param('company');
 	if (my $user = $self->user_exists($username, $password)) {
 		$self->render(text => 'User already exists', status => 403);
 	} else {
@@ -90,7 +91,7 @@ sub create_recruteur {
 			nom => $nom,
 			prenom => $prenom,
 			mobile => $mobile,
-			company => '',
+			company => $company,
 			user_id => $user->id,
 		});
 		$self->redirect_to('login_form');

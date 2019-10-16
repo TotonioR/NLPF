@@ -11,8 +11,9 @@ sub profil {
     if (defined $profile) {
         return $self->render(user => $user, profile => $profile, type => "Recruteur", status => $id);
     }
+    my $tags = $self->db->resultset('Tag')->search({user_id => $id});
     $profile = $self->db->resultset('ProfileCandidat')->search({user_id => $id})->first;
-    $self->render(user => $user, profile => $profile, type => "Candidat", status => $id);
+    $self->render(user => $user, profile => $profile, type => "Candidat", status => $id, tag => $tags);
 }
 
 1;

@@ -16,7 +16,7 @@
               <%=$c->user_name1%>
             %}
             </h2>
-            </br>
+            <br />
           % if($msg->count eq 0){
             <h3>Aucun message</h3>
           %}
@@ -28,7 +28,7 @@
               %} else {
                 <%=$c->user_name1%>
               %}
-              </small></br>
+              </small><br />
               <div class="float-right message"><%= $m->message %></div>
             %} else {
               <small class="float-left">
@@ -37,15 +37,15 @@
               %} else {
                 <%=$c->user_name1%>
               %}
-              </small></br>
+              </small><br />
               <div class="float-left message"><%= $m->message %></div>
             %}
-            </br>
-            </br>
+            <br />
+            <br />
           %}
           <%= form_for "/messagerie/$id/send" => (method => "post") => (class => "in-line") => (id => "messagerie-form") => begin %>
             <input class="form-control rounded-0" id="msg" name="msg">
-            </br>
+            <br />
             <button type="submit" class="btn btn-success">Envoyer le message</button>
           <% end %>
       </div>

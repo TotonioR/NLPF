@@ -4,7 +4,7 @@
 <!-- Full Page Image Header with Vertically Centered Content -->
 <header style="height: 40vh;background-image:url('/business.jpg');background-size: cover; background-repeat: no-repeat;">
 </header>
-</br></br>
+<br/><br/>
  <div class="container h-100">
  <div class="container emp-profile">
     <div class="row h-100 align-items-center">

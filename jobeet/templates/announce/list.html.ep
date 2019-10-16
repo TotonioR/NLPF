@@ -4,7 +4,7 @@
 <!-- Full Page Image Header with Vertically Centered Content -->
 <header style="height: 40vh;background-image:url('/business.jpg');background-size: cover; background-repeat: no-repeat;">
 </header>
-</br></br>
+<br/><br/>
 <div class="container h-100">
   <div class="container emp-profile">
     <div class="row h-100 align-items-center">
@@ -18,7 +18,7 @@
                       <input type="text" id="title" name="title" placeholder="Titre" class="form-control">
                   </div>
               </div>
-              </br>
+              <br/>
               <div class="control-group">
                   <div class="controls">
                       <input type="text" id="description" name="description" placeholder="Description" class="form-control">
@@ -27,7 +27,7 @@
               <div class="control-group">
                 <!-- Button -->
                 <div class="controls">
-                  </br>
+                  <br/>
                   <button type="submit" class="btn btn-success">Ajouter</button>
                 </div>
               </div>
