@@ -5,12 +5,22 @@ sub create {
 	my $self = shift;
 	my $title = $self->param('title');
 	my $description = $self->param('description');
-	
+	my $study = $self->param('study');
+	my $tags = $self->param('tag');
 	#creating new Announce with form params
-	$self->db->resultset('Announce')->create({
+	my $announce = $self->db->resultset('Announce')->create({
 			title => $title,
 			description => $description,
 	});
+	
+	my @tmp = split(/[,]/, $tags);
+	foreach my $i (@tmp)
+	{
+		my $tag = $self->db->resultset('TagAnnounce')->create({
+			name => $i,
+			announce_id => $announce->id,
+		 });
+	}
 
 	$self->flash(post_saved => 1);
 	$self->redirect_to('announce');

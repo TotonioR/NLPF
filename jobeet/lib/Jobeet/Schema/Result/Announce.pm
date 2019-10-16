@@ -23,3 +23,9 @@ __PACKAGE__->add_columns(
 
  # Tell DBIC that 'id' is the primary key
 __PACKAGE__->set_primary_key('id');  
+
+__PACKAGE__->has_many(
+     tags => 'Jobeet::Schema::Result::TagAnnounce',
+     'announce_id'
+ );
+1;

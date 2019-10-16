@@ -24,6 +24,26 @@
                     <input type="text" id="description" name="description" placeholder="Description" class="form-control">
                 </div>
             </div>
+            </br>
+            <div class="control-group">
+              <div class="controls">
+                <input id="tag" name="tag" placeholder="Tag1, Tag2, Tag3 ..." class="form-control">
+              </div>
+            </div>
+            </br>
+            <div class="control-group">
+              <div class="controls">
+                <label>Niveau d'étude</label>
+                <select  id="study" name="study">
+                  <option>Bac</option>
+                  <option>Bac +1</option>
+                  <option>Bac +2</option>
+                  <option>Bac +3</option>
+                  <option>Bac +4</option>
+                  <option>Bac +5</option>
+                </select>
+              </div>
+            </div>
             <div class="control-group">
               <!-- Button -->
               <div class="controls">
@@ -45,13 +65,21 @@
   <table class="table">
   <thead>
     <tr>
-      <th scope="col">Titre</th>
+      <th> Titre </th>
+      <th> Description </th>
+      <th> Tags </th>
+      <th> % Matching </th>
+      <th> Postuler </th>
     </tr>
   </thead>
   <tbody>
     % while (my $announce = $announces->next) {
         <tr>
           <td> <%= $announce->title %> </td>
+          <td> <%= $announce->description %> </td>
+          <td> tags... </td>
+          <td> 18% </td>
+          <td> <%= button_to Submit => 'announce' %> </td>
         </tr>
     % }
   </tbody>
