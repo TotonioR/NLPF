@@ -1,17 +1,12 @@
 package Jobeet::Controller::Announce;
 use Mojo::Base 'Mojolicious::Controller';
 
-sub user_exists {
-	my ($self, $id) = @_;
-	my $user = $self->db->resultset('User')->search({ id => $id })->first;
-	return $user;
-}
-
 sub create {
 	my $self = shift;
 	my $title = $self->param('title');
 	my $description = $self->param('description');
 	
+	#creating new Announce with form params
 	$self->db->resultset('Announce')->create({
 			title => $title,
 			description => $description,
@@ -23,6 +18,9 @@ sub create {
 
 sub list {
 	my $self = shift;
+	# return login form if user is not already logged
+	return $self->redirect_to('login_form') unless $self->session('user');
+
 	my $status = $self->session('user');
 	my $announces = $self->db->resultset('Announce')->search({});
 	$self->render(announces => $announces, status => $status);

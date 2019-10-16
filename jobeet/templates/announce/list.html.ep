@@ -42,8 +42,18 @@
 <div class="container">
 <div class="container emp-profile">
   <h2 class="font-weight-light">Liste des annonces</h2>
-  % while (my $announce = $announces->next) {
-        <li> <%= $announce->title %> </li>
-  % }
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Titre</th>
+    </tr>
+  </thead>
+  <tbody>
+    % while (my $announce = $announces->next) {
+        <tr>
+          <td> <%= $announce->title %> </td>
+        </tr>
+    % }
+  </tbody>
   </div>
 </div>
