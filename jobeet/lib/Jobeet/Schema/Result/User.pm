@@ -51,4 +51,5 @@ __PACKAGE__->add_columns(
      profile => 'Jobeet::Schema::Result::ProfileCandidat',
      'user_id'
  );
+
 1;

@@ -75,9 +75,11 @@
           </tr>
         </thead>
         <tbody>
+          
           % while (my $announce = $announces->next) {
               % my $match = 0;
               % my $length = 0;
+              <%= form_for '/link_announce' => (method => "post") => (class => "form-horizontal") => (id => "announceuser-form") => begin %>
               <tr>
                 <td> <%= $announce->title %> </td>
                 <td> <%= $announce->description %> </td>
@@ -100,8 +102,15 @@
                       <span> <%= ($match * 100) / ($length) %> </span>
                     <% } %>  
                 </td>
-                <td> <%= button_to Submit => 'announce' %> </td>
+                %= hidden_field announce => $announce->id, id => 'announce'
+                %= hidden_field match => $match, id => 'match'
+                <td>  
+                  <% if ($is_candidat) { %>
+                    %= submit_button 'Submit' 
+                  <% } %>  
+                </td>
               </tr>
+              <% end %>
           % }
         </tbody>
       </table>
