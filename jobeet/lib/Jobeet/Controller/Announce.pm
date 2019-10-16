@@ -39,7 +39,6 @@ sub list {
     my $user = $self->db->resultset('User')->search({id => $id})->first;
  	my $profile = $self->db->resultset('ProfileCandidat')->search({user_id => $id})->first;
 	my $is_candidat = defined $profile;
-	print "Content: $is_candidat\n";
 	my $announces = $self->db->resultset('Announce')->search({});
 	$self->render(announces => $announces, status => $id, is_candidat => $is_candidat, tags => $self->db->resultset('TagAnnounce'));
 }

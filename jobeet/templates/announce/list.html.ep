@@ -81,7 +81,7 @@
                 <td> <%= $announce->description %> </td>
                 <td>  <% while (my $tag = $tags->next) { %>
                         <% if ($tag->announce_id == $announce->id) { %> 
-                            <span> $tag->name </span> 
+                            <span> <%= $tag->name %> </span> 
                         <% } %>
                       <% } %>
                 </td>
