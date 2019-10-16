@@ -7,10 +7,10 @@ sub editprofil {
 	my $user = $self->db->resultset('User')->search({id => $id})->first;
 	my $profile = $self->db->resultset('ProfileRecruteur')->search({user_id => $id})->first;
 	if (defined $profile) {
-		return $self->render(user => $user, profile => $profile, type => "Recruteur");
+		return $self->render(user => $user, profile => $profile, type => "Recruteur", status => $id);
 	}
 	$profile = $self->db->resultset('ProfileCandidat')->search({user_id => $id})->first;
-	$self->render(user => $user, profile => $profile, type => "Candidat");
+	$self->render(user => $user, profile => $profile, type => "Candidat", status => $id);
 }
 
 sub modifyprofil {
@@ -21,9 +21,6 @@ sub modifyprofil {
 	my $nom = $self->param('nom');
 	my $prenom = $self->param('prenom');
 	my $mobile = $self->param('mobile');
-	my $study = $self->param('study');
-	my $description = $self->param('description');
-	my $tags = $self->param('tag');
 	my $user = $self->db->resultset('User')->update(
 		{
 			email => $username,
@@ -33,6 +30,9 @@ sub modifyprofil {
 	);
 	$user = $self->db->resultset('User')->search({id => $id})->first;
 	if ($user->recruteur eq 0) {
+		my $study = $self->param('study');
+		my $description = $self->param('description');
+		my $tags = $self->param('tag');
 		my $profile = $self->db->resultset('ProfileCandidat')->update({
 			nom         => $nom,
 			prenom      => $prenom,
@@ -45,12 +45,12 @@ sub modifyprofil {
 	}
 	else
 	{
+		my $company = $self->param('company');
 		my $profile = $self->db->resultset('ProfileRecruteur')->update({
 			nom         => $nom,
 			prenom      => $prenom,
 			mobile      => $mobile,
-			study       => $study,
-			description => $description },
+			company		=> $company },
 			{ user_id => $user->id
 			});
 		$self->render(type => "Recruteur");

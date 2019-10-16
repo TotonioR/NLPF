@@ -1,14 +1,15 @@
 % layout 'default';
 % title 'Jobeet';
-
+%= include 'menu', status => $status
 
 <header style="height: 50vh;background-image:url('/business.jpg');background-size: cover;background-position: center; background-repeat: no-repeat;">
 </header>
-</br></br>
+<br/><br/>
 <div class="container h-100">
+  <div class="container emp-profile">
   <div class="row h-100 align-items-center">
     <div class="col-12 text-center">
-      <h2 class="font-weight-light">Modifier mon profil</h2></br>
+      <h2 class="font-weight-light">Modifier mon profil</h2><br/>
       <%= form_for '/editprofil' => (method => "post") => (class => "form-horizontal") => (id => "edit-form") => begin %>
       <form>
         <fieldset>
@@ -18,50 +19,44 @@
               <input type="email" id="username" name="username" value='<%= $user->email %>' class="form-control">
             </div>
           </div>
-          </br>
+          <br/>
           <div class="control-group">
             <div class="controls">
               <label>Mot de passe</label>
               <input type="password" id="password" name="password"  value='<%= $user->password %>' class="form-control">
             </div>
           </div>
-            </br>
-            <div class="control-group">
-              <div class="controls">
-                <label>Tags</label>
-                <input id="tag" name="tag" placeholder="Tag1, Tag2, Tag3 ..." class="form-control">
-              </div>
-            </div>
 
-            </br>
+            <br/>
             <div class="control-group">
               <div class="controls">
                 <label>Nom</label>
                 <input id="nom" name="nom" value='<%= $profile->nom %>' class="form-control">
               </div>
             </div>
-            </br>
+            <br/>
             <div class="control-group">
               <div class="controls">
                 <label>Prénom</label>
                 <input id="prenom" name="prenom" type="text"  value='<%= $profile->prenom %>' class="form-control">
               </div>
             </div>
-            </br>
+            <br/>
             <div class="control-group">
               <div class="controls">
                 <label>Numéro de téléphone</label>
                 <input type="text" id="mobile" name="mobile" value='<%= $profile->mobile %>' class="form-control">
               </div>
             </div>
-            </br>
+            <br/>
+            % if($type eq "Candidat"){
             <div class="control-group">
               <div class="controls">
                 <label>Description</label>
-                  <textarea class="form-control rounded-0" id="description" name="description"  type="text" value='<%= $profile->description %>'  rows="6"></textarea>
+                  <textarea class="form-control rounded-0" id="description" name="description"  type="text" rows="6"><%= $profile->description %></textarea>
               </div>
             </div>
-             </br>
+             <br/>
             <div class="control-group">
               <div class="controls">
                 <label>Niveau d'étude</label>
@@ -76,9 +71,17 @@
               </div>
             </div>
             <!-- Button -->
-
+            %} else {
+              <br/>
+            <div class="control-group">
+              <div class="controls">
+                <label>Compagnie</label>
+                <input type="text" id="company" name="company" value='<%= $profile->company %>' class="form-control">
+              </div>
+            </div>
+            %}
             <div class="controls">
-              </br>
+              <br/>
               <button type="submit" class="btn btn-success">Modifier</button>
             </div>
           </div>
@@ -86,5 +89,6 @@
       </form>
       <% end %>
     </div>
+  </div>
   </div>
 </div>
