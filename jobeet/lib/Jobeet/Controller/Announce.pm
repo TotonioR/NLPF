@@ -1,6 +1,8 @@
 package Jobeet::Controller::Announce;
 use Mojo::Base 'Mojolicious::Controller';
 
+
+
 sub create {
 	my $self = shift;
 	my $title = $self->param('title');
@@ -12,7 +14,7 @@ sub create {
 			title => $title,
 			description => $description,
 	});
-	
+
 	my @tmp = split(/[,]/, $tags);
 	foreach my $i (@tmp)
 	{
@@ -28,12 +30,17 @@ sub create {
 
 sub list {
 	my $self = shift;
+
 	# return login form if user is not already logged
 	return $self->redirect_to('login_form') unless $self->session('user');
-
-	my $status = $self->session('user');
+	
+	#checking which profile is concerned
+	my $id = $self->session('user');
+    my $user = $self->db->resultset('User')->search({id => $id})->first;
+ 	my $profile = $self->db->resultset('ProfileCandidat')->search({user_id => $id})->first;
+	
 	my $announces = $self->db->resultset('Announce')->search({});
-	$self->render(announces => $announces, status => $status);
+	$self->render(announces => $announces, status => $id, is_candidat => defined $profile, tags => $self->db->resultset('TagAnnounce'));
 }
 
 1;
