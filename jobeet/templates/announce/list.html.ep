@@ -6,7 +6,7 @@
 </header>
 </br></br>
 <div class="container h-100">
-  <% if ($is_candidat) { %>
+  <% if (!$is_candidat) { %>
     <div class="container emp-profile">
       <div class="row h-100 align-items-center">
         <div class="col-12 text-center">
