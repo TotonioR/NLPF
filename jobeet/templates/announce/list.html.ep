@@ -76,29 +76,29 @@
         </thead>
         <tbody>
           % while (my $announce = $announces->next) {
+              % my $match = 0;
+              % my $length = 0;
               <tr>
                 <td> <%= $announce->title %> </td>
                 <td> <%= $announce->description %> </td>
                 <td>  <% while (my $tag = $tags->next) { %>
                         <% if ($tag->announce_id == $announce->id) { %> 
                             <span> <%= $tag->name %> </span> 
+                            <% if ($tag->announce_id == $announce->id) { %>
+                              <% while (my $user_tag = $user_tags->next) { %> 
+                                <% if ($user_tag->name eq $tag->name) { %>
+                                      % $match += 1;
+                                <% } %>
+                              <% } %>
+                              % $length += 1;
+                            <% } %>
                         <% } %>
                       <% } %>
                 </td>
                 <td>  
-                      % my $match = 0;
-                      % my $length = 0;
-                      <% while (my $tag = $tags->next) { %>
-                        <% if ($tag->announce_id == $announce->id) { %>
-                            <% while (my $user_tag = $user_tags->next) { %> 
-                              <% if ($user_tag->name eq $tag->name) { %>
-                                    % $match += 1;
-                              <% } %>
-                            <% } %>
-                            % $length += 1;
-                        <% } %>
-                      <% } %>
-                      <span> <%= ($match * 100) / ($length + 1) %> </span>
+                    <% if ($is_candidat) { %>
+                      <span> <%= ($match * 100) / ($length) %> </span>
+                    <% } %>  
                 </td>
                 <td> <%= button_to Submit => 'announce' %> </td>
               </tr>
