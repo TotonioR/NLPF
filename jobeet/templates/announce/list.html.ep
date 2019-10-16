@@ -92,10 +92,10 @@
                         <% if ($tag->announce_id == $announce->id) { %>
                             <% while (my $user_tag = $user_tags->next) { %> 
                               <% if ($user_tag->name == $tag->name) { %>
-                                    % $match = $match + 1;
+                                    % $match += 1;
                               <% } %>
                             <% } %>
-                            % $length = $length + 1;
+                            % $length += 1;
                         <% } %>
                       <% } %>
                       <span> <%= ($match * 100) / ($length + 1) %> </span>
