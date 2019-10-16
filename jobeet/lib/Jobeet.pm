@@ -35,6 +35,9 @@ sub startup {
   $r->post('/announce_add')->to('announce#create');
   #Profil
   $r->get('/profil')->name('profil')->to('Profil#profil');
+  #Edit profil
+  $r->get('/editprofil')->name('editprofil')->to('Editprofil#editprofil');
+  $r->post('/editprofil')->name('editprofil')->to('Editprofil#modifyprofil');
   
   my $auth = $r->under('/')->to('Login#is_logged_in');
   $auth->get('/overview')->to('dashboard#overview');
